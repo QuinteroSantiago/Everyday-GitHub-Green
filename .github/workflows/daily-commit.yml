@@ -1,0 +1,26 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Increment a counter in a file
+      - name: Update counter
+        run: |
+          echo "Daily Commit number $(cat counter.txt)" >> file.txt
+          echo $((1 + $(cat counter.txt))) > counter.txt
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-email@example.com'
+          git add .
+          git commit -m "Daily Commit number $(cat counter.txt)"
+          git push

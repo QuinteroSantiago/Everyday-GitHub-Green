@@ -19,8 +19,8 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-email@example.com'
+          git config --global user.name 'Santiago Quintero'
+          git config --global user.email 'santiagoquinteroq@gmail.com'
           git add .
           git commit -m "Daily Commit number $(cat counter.txt)"
           git push

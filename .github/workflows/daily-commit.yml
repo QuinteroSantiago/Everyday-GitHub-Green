@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # Increment a counter in a file
+      - name: Updates repo
+        run: |
+          git fetch
+          git pull -r
       - name: Update counter
         run: |
           echo "Daily Commit number $(cat counter.txt)" >> file.txt
